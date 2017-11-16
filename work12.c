@@ -15,10 +15,13 @@ int main(){
   fork();
   printf("pid after:%d\n", getpid());
   srand(time(NULL));
-  int s= rand();
+
+  int s= rand() % 16 + 5;//rand() % (max +1 -min) + min
   sleep(s);
+
   printf("pid: %d is finished\n",getpid());
   int i;
+
   int pid=wait( &i );
   printf("status: %d\n", pid,s);
 
