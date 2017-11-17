@@ -11,7 +11,7 @@ int main(){
   // If child
   if(!frk){
     printf("pid of child:%d\n", getpid());
-    srand(time(NULL));
+    srand(time(NULL) + getpid());
     int s= rand() % 16 + 5;//rand() % (max +1 -min) + min
     sleep(s);
     printf("pid: %d is finished after %d seconds\n",getpid(),s);
