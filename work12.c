@@ -6,8 +6,10 @@
 #include <sys/wait.h>
 int main(){
   printf("pp id b4: %d\n",getpid());
-  fork();
-  int frk=fork();
+  pid_t frk=fork();
+  if(frk>0){
+    frk=fork();
+  }
   // If child
   if(!frk){
     printf("pid of child:%d\n", getpid());
