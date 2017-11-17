@@ -7,20 +7,21 @@
 int main(){
   printf("pp id b4: %d\n",getpid());
   int frk=fork();
-  if(frk==0){
+  // If child
+  if(!frk){
     printf("pid of child:%d\n", getpid());
     srand(time(NULL));
     int s= rand() % 16 + 5;//rand() % (max +1 -min) + min
     sleep(s);
     printf("pid: %d is finished after %d seconds\n",getpid(),s);
-    exit(0);
+    // Uh something tells me this isn't the professional way to do it
+    exit(s);
+  } else {
+    int status;
+    int pid= wait( &status );
+    printf("Received child exit signal. TIME: %d\n", WEXITSTATUS(status));
+    printf("Done! status: %d\n", pid);
   }
-  if(frk){
-    int i;
-    int pid= wait( &i );
-    printf("status: %d\n", pid);
-  }
-
 
   return 0;
 
