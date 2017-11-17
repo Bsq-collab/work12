@@ -1,13 +1,15 @@
-all: work12.o
-	gcc -o work12.out work12.o
+NAME=work12
 
-work12.o: work12.c
-	gcc -c work12.c
+all: $(NAME).o
+	gcc -o $(NAME).out $(NAME).o
+
+$(NAME).o: $(NAME).c
+	gcc -c $(NAME).c
 
 
 run: all
-	./work12.out
+	./$(NAME).out
 
 clean:
-	rm -f ./work12.out
-	rm -f ./work12.o
+	rm -f ./$(NAME).out
+	rm -f ./$(NAME).o
